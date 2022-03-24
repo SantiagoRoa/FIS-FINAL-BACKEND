@@ -4,7 +4,7 @@
 
 ### Autores
 - Nelson Santiago Roa Garzón - 20172020099
-- Christian Isaac Gamboa Restrepo - 20172020099
+- Christian Isaac Gamboa Restrepo - 20172020076
 
 ### Descripción
 Backend aplicativo Web sistema de administración y ventas para salas de Cine.
