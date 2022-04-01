@@ -1,11 +1,11 @@
-const PeliculaController = {}
+const EvaluacionController = {}
 
-PeliculaController.list = (req, res) => {
+EvaluacionController.list = (req, res) => {
     req.getConnection((err, conn) => {
         if (err) {
             return res.status(500).send({ message: "Error en el servidor" })
         }
-        let sql = 'SELECT * FROM pelicula';
+        let sql = 'SELECT * FROM evaluacion';
         conn.query(sql, (err, data) => {
             if (err) {
                 return res(400).send({ message: "Error en SQL" })
@@ -24,13 +24,13 @@ PeliculaController.list = (req, res) => {
     });
 };
 
-PeliculaController.create = (req, res) => {
+EvaluacionController.create = (req, res) => {
     req.getConnection((err, conn) => {
         if (err) {
             return res.status(500).send({ message: "Error en el servidor" })
         }
         const datos = req.body;
-        let sql = `INSERT INTO pelicula set ${datos}`
+        let sql = `INSERT INTO evaluacion set ${datos}`
         conn.query(sql, (err) => {
             if (err) {
                 return res(400).send({ message: "Error en SQL" })
@@ -42,4 +42,4 @@ PeliculaController.create = (req, res) => {
     });
 };
 
-module.exports = PeliculaController;
+module.exports = EvaluacionController;
