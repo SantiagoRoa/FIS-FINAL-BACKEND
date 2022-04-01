@@ -1,0 +1,30 @@
+{
+  "name": "fis-final-backend",
+  "version": "1.0.0",
+  "description": "Proyecto final FIS",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SantiagoRoa/FIS-FINAL-BACKEND.git"
+  },
+  "author": "Santiago Roa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SantiagoRoa/FIS-FINAL-BACKEND/issues"
+  },
+  "homepage": "https://github.com/SantiagoRoa/FIS-FINAL-BACKEND#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-myconnection": "^1.0.4",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
