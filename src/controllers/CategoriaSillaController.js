@@ -1,11 +1,11 @@
-const PeliculaController = {}
+const CategoriaSillaController = {}
 
-PeliculaController.list = (req, res) => {
+CategoriaSillaController.list = (req, res) => {
     req.getConnection((err, conn) => {
         if (err) {
             return res.status(500).send({ message: "Error en el servidor" })
         }
-        let sql = 'SELECT * FROM pelicula';
+        let sql = 'SELECT * FROM categoria_silla';
         conn.query(sql, (err, data) => {
             if (err) {
                 return res(400).send({ message: "Error en SQL" })
@@ -24,14 +24,14 @@ PeliculaController.list = (req, res) => {
     });
 };
 
-PeliculaController.select = (req, res) => {
+CategoriaSillaController.select = (req, res) => {
     req.getConnection((err, conn) => {
         if (err) {
             return res.status(500).send({ message: "Error en el servidor" })
         }
         let id = req.params.id;
       
-        let sql = `SELECT * FROM pelicula WHERE id_pelicula = ${id}`
+        let sql = `SELECT * FROM categoria_silla WHERE id_categoria_silla = ${id}`
         conn.query(sql, (err, data) => {
             if (err) {
                 return res(400).send({ message: "Error en SQL" })
@@ -50,22 +50,23 @@ PeliculaController.select = (req, res) => {
     });
 };
 
-PeliculaController.create = (req, res) => {
+
+CategoriaSillaController.create = (req, res) => {
     req.getConnection((err, conn) => {
         if (err) {
             return res.status(500).send({ message: "Error en el servidor" })
         }
         const datos = req.body;
-        let sql = `INSERT INTO pelicula set ${datos}`
+        let sql = `INSERT INTO categoria_silla set ${datos}`
         conn.query(sql, (err) => {
             if (err) {
                 return res(400).send({ message: "Error en SQL" })
             }
             return res.status(200).send({
-                message: "Se insertó el usuario"
+                message: "Se insertó la categoria silla"
             });
         });
     });
 };
 
-module.exports = PeliculaController;
+module.exports = CategoriaSillaController;

@@ -1,6 +1,6 @@
-const PeliculaController = {}
+const SalaController = {}
 
-PeliculaController.list = (req, res) => {
+SalaController.list = (req, res) => {
     req.getConnection((err, conn) => {
         if (err) {
             return res.status(500).send({ message: "Error en el servidor" })
@@ -24,14 +24,14 @@ PeliculaController.list = (req, res) => {
     });
 };
 
-PeliculaController.select = (req, res) => {
+SalaController.select = (req, res) => {
     req.getConnection((err, conn) => {
         if (err) {
             return res.status(500).send({ message: "Error en el servidor" })
         }
         let id = req.params.id;
       
-        let sql = `SELECT * FROM pelicula WHERE id_pelicula = ${id}`
+        let sql = `SELECT * FROM sala WHERE id_sala = ${id}`
         conn.query(sql, (err, data) => {
             if (err) {
                 return res(400).send({ message: "Error en SQL" })
@@ -50,7 +50,33 @@ PeliculaController.select = (req, res) => {
     });
 };
 
-PeliculaController.create = (req, res) => {
+SalaController.selectByMultiplex = (req, res) => {
+    req.getConnection((err, conn) => {
+        if (err) {
+            return res.status(500).send({ message: "Error en el servidor" })
+        }
+        let id = req.params.id;
+      
+        let sql = `SELECT * FROM sala WHERE id_multiplex = ${id}`
+        conn.query(sql, (err, data) => {
+            if (err) {
+                return res(400).send({ message: "Error en SQL" })
+            }
+            if (data) {
+                return res.status(200).send({
+                    data,
+                });
+            } else {
+                return res.status(404).send({
+                    message: "No se encuentra el dato"
+                })
+            }
+
+        });
+    });
+};
+
+SalaController.create = (req, res) => {
     req.getConnection((err, conn) => {
         if (err) {
             return res.status(500).send({ message: "Error en el servidor" })
@@ -62,10 +88,10 @@ PeliculaController.create = (req, res) => {
                 return res(400).send({ message: "Error en SQL" })
             }
             return res.status(200).send({
-                message: "Se insertó el usuario"
+                message: "Se insertó la sala"
             });
         });
     });
 };
 
-module.exports = PeliculaController;
+module.exports = SalaController;

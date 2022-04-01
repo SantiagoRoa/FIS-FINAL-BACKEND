@@ -1,11 +1,11 @@
-const PeliculaController = {}
+const BoletaController = {}
 
-PeliculaController.list = (req, res) => {
+BoletaController.list = (req, res) => {
     req.getConnection((err, conn) => {
         if (err) {
             return res.status(500).send({ message: "Error en el servidor" })
         }
-        let sql = 'SELECT * FROM pelicula';
+        let sql = 'SELECT * FROM boleta';
         conn.query(sql, (err, data) => {
             if (err) {
                 return res(400).send({ message: "Error en SQL" })
@@ -24,14 +24,14 @@ PeliculaController.list = (req, res) => {
     });
 };
 
-PeliculaController.select = (req, res) => {
+BoletaController.select = (req, res) => {
     req.getConnection((err, conn) => {
         if (err) {
             return res.status(500).send({ message: "Error en el servidor" })
         }
         let id = req.params.id;
       
-        let sql = `SELECT * FROM pelicula WHERE id_pelicula = ${id}`
+        let sql = `SELECT * FROM boleta WHERE id_boleta = ${id}`
         conn.query(sql, (err, data) => {
             if (err) {
                 return res(400).send({ message: "Error en SQL" })
@@ -50,22 +50,22 @@ PeliculaController.select = (req, res) => {
     });
 };
 
-PeliculaController.create = (req, res) => {
+BoletaController.create = (req, res) => {
     req.getConnection((err, conn) => {
         if (err) {
             return res.status(500).send({ message: "Error en el servidor" })
         }
         const datos = req.body;
-        let sql = `INSERT INTO pelicula set ${datos}`
+        let sql = `INSERT INTO boleta set ${datos}`
         conn.query(sql, (err) => {
             if (err) {
                 return res(400).send({ message: "Error en SQL" })
             }
             return res.status(200).send({
-                message: "Se insertó el usuario"
+                message: "Se insertó la boleta"
             });
         });
     });
 };
 
-module.exports = PeliculaController;
+module.exports = BoletaController;
