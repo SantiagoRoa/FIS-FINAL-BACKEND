@@ -7,6 +7,7 @@ const mysql = require('mysql2');
 const myConnection = require('express-myconnection');
 var cors = require('cors');
 const { urlencoded } = require('express');
+var bodyParser = require('body-parser')
 
 const app = express();
 const router = require('./routes/routes');
@@ -23,7 +24,10 @@ app.use(myConnection(mysql, { //Conexión
     port: process.env.DBPORT,
     database: process.env.DBDATABASE
 }, 'single'))
-app.use(express.urlencoded({
+
+app.use(express.json());
+
+app.use(bodyParser.urlencoded({
     extended: false
 }));
 

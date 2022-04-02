@@ -2,9 +2,10 @@
   "name": "fis-final-backend",
   "version": "1.0.0",
   "description": "Proyecto final FIS",
-  "main": "app.js",
+  "main": "src /app.js",
   "scripts": {
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon src/app.js",
+    "start": "node src/app.js"
   },
   "repository": {
     "type": "git",
