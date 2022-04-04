@@ -75,9 +75,9 @@ PeliculaController.selectByMultiplex = (req, res) => {
         }
         let id = req.params.id;
 
-        let sql = `SELECT * FROM pelicula
-        pelicula INNER JOIN cartelera ON pelicula.id_pelicula = cartelera.id_pelicula
-        where id_multiplex = ${id}`
+        let sql = `SELECT * FROM pelicula pelicula INNER JOIN cartelera ON pelicula.id_pelicula = cartelera.id_pelicula 
+        INNER JOIN sala ON cartelera.id_sala = sala.id_sala
+        where cartelera.id_multiplex = ${id}`
         conn.query(sql, (err, data) => {
             if (err) {
                 return res(400).send({ message: "Error en SQL" })

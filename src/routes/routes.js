@@ -18,7 +18,7 @@ const ReporteController = require('../controllers/ReporteController')
 const SalaController = require('../controllers/SalaController')
 
 router.get('/cuentas/list', CuentaController.list);
-router.get('/cuentas/select/:id/:password', CuentaController.select);
+router.get('/cuentas/select/:id/:password/:type', CuentaController.select);
 router.post('/cuentas/insert', CuentaController.create);
 
 router.get('/evaluaciones/list', EvaluacionController.list);

@@ -31,7 +31,8 @@ CuentaController.select = (req, res) => {
         }
         let id = req.params.id;
         let pass = req.params.password;
-        let sql = `SELECT * FROM cuenta WHERE id_cuenta = ${id} AND password = '${pass}'`
+        let type = req.params.type;
+        let sql = `SELECT * FROM cuenta WHERE numero_id_empleado = ${id} AND password = '${pass}' AND tipo_id_empleado = '${type}'`
         conn.query(sql, (err, data) => {
             if (err) {
                 return res(400).send({ message: "Error en SQL" })
