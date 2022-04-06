@@ -56,8 +56,21 @@ CompraController.create = (req, res) => {
             return res.status(500).send({ message: "Error en el servidor" })
         }
         const datos = req.body;
+        let id_compra= datos.id_compra;
+        let fecha_compra= datos.fecha_compra;
+        let cantidad_boletas_general= datos.cantidad_boletas_general;
+        let cantidad_boletas_preferencial= datos.cantidad_boletas_preferencial;
+        let puntaje_boletas= datos.puntaje_boletas;
+        let monto_boletas= datos.monto_boletas;
+        let puntaje_comida= datos.puntaje_comida;
+        let monto_comida= datos.monto_comida;
+        let puntaje_total= datos.puntaje_total;
+        let monto_total= datos.monto_total;
+        let tipo_id_cliente= datos.tipo_id_cliente;
+        let numero_id_cliente= datos.numero_id_cliente;
         let sql = `INSERT INTO compra set ${datos}`
-        conn.query(sql, (err) => {
+        conn.query(`INSERT INTO compra set id_compra=?, fecha_compra=?, cantidad_boletas_general=?, cantidad_boletas_preferencial=?, puntaje_boletas=?, monto_boletas=?, puntaje_comida=?, monto_comida=?, puntaje_total=?, monto_total=?, tipo_id_cliente=?, numero_id_cliente=?`
+            ,[id_compra,fecha_compra,cantidad_boletas_general,cantidad_boletas_preferencial,puntaje_boletas,monto_boletas,puntaje_comida,monto_comida,puntaje_total,monto_total,tipo_id_cliente,numero_id_cliente], (err) => {
             if (err) {
                 return res(400).send({ message: "Error en SQL" })
             }
